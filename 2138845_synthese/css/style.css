@@ -1,0 +1,152 @@
+/* Réinitialisation des styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(10, 10, 10);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 600px;
+    padding: 20px;
+}
+
+#accueil {
+    text-align: center;
+    padding: 40px;
+}
+
+.btn.acceder,
+.btn.retour {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: chartreuse;
+    color: black;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+.recherche {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.recherche .champs_recherche {
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    color: gray;
+}
+
+.container_liste_musique {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.liste_musique {
+    flex: 0 0 33.33%;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.liste_musique:hover {
+    background-color: chartreuse;
+    color: black;
+    border-radius: 5px;
+}
+
+.infos_liste_musique {
+    margin-bottom: 5px;
+}
+
+.musique_active {
+    margin-top: 20px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.musique_active img {
+    max-width: 40%;
+    margin-right: 20px;
+}
+
+#lecteur {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: rgb(10, 10, 10);
+}
+
+#infos_musique {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#barre_progression {
+    width: 100%;
+    height: 5px;
+    background-color: #ccc;
+    border-radius: 2px;
+    margin: 0 5px;
+}
+
+#contrôles {
+    display: flex;
+    align-items: center;
+}
+
+#boutton_play_pause {
+    background-color: chartreuse;
+    color: black;
+    border: none;
+    padding: 10px 25px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.infos_musique{
+    display: flex;
+    justify-content: center;
+}
+
+.infos_musique .tags {
+    padding: 5px 10px;
+    margin: 15px 5px 0 0;
+    display: inline-block;
+    border: solid 1px chartreuse;
+    border-radius: 5px;
+}
+
+img {
+    width: 200px;
+    height: auto;
+}
+
+.progression_remplie {
+    background-color: chartreuse; 
+    height: 100%;
+    width: 0%; 
+    transform-origin: left; 
+    transition: width 0.3s ease-in-out; 
+}
+  

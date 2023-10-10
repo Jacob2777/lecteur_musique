@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="app" v-cloak>
+
+        <div id="accueil" v-if="page_active === 'accueil'">
+            <a class="btn acceder" href="#" @click="changerPage('page_lecteur')">Voir le lecteur</a>
+        </div>
+
+        <div id="page_lecteur" v-if="page_active === 'page_lecteur'">
+            <a href="#" class="btn retour" @click="changerPage('accueil')">Retour</a>
+            <div class="recherche">
+                <input class="champs_recherche"
+                    type="text" 
+                    v-model="texte_recherche" 
+                    placeholder="Recherche..."
+                    >
+            </div>
+            <div class="container_liste_musique">
+                <div class="liste_musique" v-for="musique of filtrer(musiques)" @click="changerMusique(musique)">
+                    <p class="infos_liste_musique titre"> {{ musique.titre }}</p>
+                    <p class="infos_liste_musique artiste"> {{ musique.artiste }}</p>
+                    <p class="infos_liste_musique temps">{{ formatTemps(musique.temps) }}</p>
+                </div>
+            </div>
+
+            <div class="musique_active" v-if="musique_active">
+                <img :src="'chansons/' + musique_active.image" alt="">
+                <div id="lecteur">
+                    <div id="infos_musique">
+                        <span id="progression">{{ progression_ref }}</span>
+                        <div id="barre_progression" ref="barre_progression" @timeupdate="timeUpdate()">
+                            <div class="progression_remplie" ref="barre_remplie"></div>
+                        </div>
+                        <span id="temps_chanson" ref="temps_chanson">{{ formatTemps(musique_active.temps) }}</span>
+                    </div>
+                    <div id="contrôles">
+                        <button id="boutton_play_pause" @click="playPause()">{{ texte_btn_play }}</button>
+                        <input class="slider" type="range" ref="slider" id="volume" min="0" max="1" step="0.05" value="1" @input="volume()">
+                    </div>
+                </div>
+                <audio ref="audio_player" id="audio-player" :src="'chansons/' + musique_active.audio" @timeupdate="timeUpdate()"></audio>
+            </div>
+            
+            <div class="infos_musique" v-if="musique_active">
+                <p class="tags" v-for="tag in musique_active.tags" :key="tag">{{ tag }}</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js" type="module"></script>
+</body>
+</html>
